@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+
+<meta charset="UTF-8">
+
+
+<title>Study Schedule</title>
+
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+
+
+
+<body>
+
+
+
+<div class="dashboard">
+
+
+
+<aside class="sidebar">
+
+
+<h2>📚 AI Planner</h2>
+
+
+
+<ul>
+
+
+<li>
+
+<a href="/dashboard">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/subjects">
+
+<i class="fa-solid fa-book"></i>
+
+Subjects
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/tasks">
+
+<i class="fa-solid fa-list-check"></i>
+
+Tasks
+
+</a>
+
+</li>
+
+
+
+<li class="active">
+
+
+<a href="/schedule">
+
+
+<i class="fa-solid fa-calendar-days"></i>
+
+
+Study Schedule
+
+
+</a>
+
+
+</li>
+
+
+
+<li>
+
+<a href="/ai_planner">
+
+<i class="fa-solid fa-robot"></i>
+
+AI Planner
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/my_plans">
+
+<i class="fa-solid fa-brain"></i>
+
+My AI Plans
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/progress">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Progress
+
+</a>
+
+</li>
+
+<li>
+
+<a href="/exams">
+
+<i class="fa-solid fa-calendar-check"></i>
+
+Exams
+
+</a>
+
+</li>
+
+<li>
+
+<a href="/logout">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+
+</ul>
+
+
+</aside>
+
+<main class="content">
+
+
+<div class="topbar">
+
+<div>
+
+<h2>📅 Study Schedule</h2>
+
+<p>Your planned study sessions</p>
+
+
+</div>
+
+<a href="/add_schedule">
+
+<button class="generate-btn">
+
++ Create Schedule
+
+</button>
+
+</a>
+</div>
+
+
+
+
+
+<div class="box">
+
+
+<h2>Today's Schedule</h2>
+
+
+
+<ul>
+
+
+{% if schedules %}
+
+
+{% for schedule in schedules %}
+
+
+<li>
+
+
+<li>
+
+📅 {{schedule[3]}}
+
+<br>
+
+⏰ {{schedule[0]}} - {{schedule[1]}}
+
+<br>
+
+📚 {{schedule[2]}}
+
+</li>
+
+
+
+</li>
+
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+
+<li>
+
+No schedule created yet 😌
+
+</li>
+
+
+
+{% endif %}
+
+
+</ul>
+
+
+
+</div>
+
+</main>
+
+</div>
+
+</body>
+
+
+</html>

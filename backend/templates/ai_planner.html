@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Planner</title>
+
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+
+<aside class="sidebar">
+
+
+<h2>📚 AI Planner</h2>
+
+
+<ul>
+
+
+<li>
+<a href="/dashboard">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+</li>
+
+
+<li>
+<a href="/subjects">
+<i class="fa-solid fa-book"></i>
+Subjects
+</a>
+</li>
+
+
+<li>
+<a href="/tasks">
+<i class="fa-solid fa-list-check"></i>
+Tasks
+</a>
+</li>
+
+
+<li>
+<a href="/schedule">
+<i class="fa-solid fa-calendar-days"></i>
+Study Schedule
+</a>
+</li>
+
+
+
+<li class="active">
+
+<a href="/ai_planner">
+
+<i class="fa-solid fa-robot"></i>
+
+AI Planner
+
+</a>
+
+</li>
+
+
+
+<li>
+<a href="/my_plans">
+
+<i class="fa-solid fa-brain"></i>
+
+My AI Plans
+
+</a>
+</li>
+
+
+
+<li>
+<a href="/progress">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Progress
+
+</a>
+</li>
+
+
+<li>
+<a href="/exams">
+
+<i class="fa-solid fa-calendar-check"></i>
+
+Exams
+
+</a>
+</li>
+
+
+
+<li>
+<a href="/logout">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+</li>
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+<main class="content">
+
+
+
+
+
+<div class="topbar">
+
+
+<div>
+
+
+<h2>🤖 AI Study Planner</h2>
+
+
+<p>
+
+Create your personalized learning roadmap
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- AI Header -->
+
+
+<div class="ai-hero">
+
+
+<div>
+
+<h1>
+
+🚀 Smart Study Roadmap
+
+</h1>
+
+
+<p>
+
+AI will analyze your goal, time and subjects to create your plan.
+
+</p>
+
+
+</div>
+
+
+<div class="ai-icon">
+
+🧠
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="form-card ai-form">
+
+
+
+<h2>
+
+Generate AI Plan ✨
+
+</h2>
+
+
+
+<form method="POST">
+
+
+
+
+
+<div class="form-grid">
+
+
+
+
+
+<div>
+
+
+<label>🎯 Goal</label>
+
+<select name="goal" required>
+
+<option value="">Select Goal</option>
+
+<option>Exam Preparation</option>
+
+<option>Placement Preparation</option>
+
+<option>Skill Development</option>
+
+<option>Project Learning</option>
+
+</select>
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<label>📚 Subjects</label>
+
+<input
+
+type="text"
+
+name="subjects"
+
+placeholder="Python, AI, DBMS"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<label>⏳ Daily Hours</label>
+
+<input
+
+type="number"
+
+name="hours"
+
+placeholder="Hours/day"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<label>📅 Target Date</label>
+
+<input
+
+type="date"
+
+name="exam_date"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+
+<label>🧠 Level</label>
+
+
+<select name="level" required>
+
+
+<option value="">Select Level</option>
+
+<option>Beginner</option>
+
+<option>Intermediate</option>
+
+<option>Advanced</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div>
+
+
+<label>📖 Learning Style</label>
+
+
+<select name="style" required>
+
+
+<option value="">Choose Style</option>
+
+<option>Theory First</option>
+
+<option>Practice First</option>
+
+<option>Both Theory and Practice</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<label>🔥 Weak Topics</label>
+
+
+<textarea
+
+name="weak_topics"
+
+placeholder="Topics you struggle with..."></textarea>
+
+
+
+
+
+
+
+
+<label>🗓 Daily Routine</label>
+
+
+<textarea
+
+name="routine"
+
+placeholder="College timings, free hours..."></textarea>
+
+
+
+
+
+
+
+
+<label>⭐ Priority Topics</label>
+
+
+<textarea
+
+name="priority"
+
+placeholder="Extra focus topics"></textarea>
+
+
+
+
+
+
+
+
+<label>📌 Plan Type</label>
+
+
+<select name="plan_type">
+
+
+<option>Daily Schedule</option>
+
+<option>Weekly Roadmap</option>
+
+<option>Revision Plan</option>
+
+
+</select>
+
+
+
+
+
+
+
+<button type="submit">
+
+
+🤖 Generate Personalized Plan
+
+
+</button>
+
+
+
+
+
+</form>
+
+
+
+</div>
+
+
+
+
+
+
+
+</main>
+
+
+
+</div>
+
+
+
+
+
+</body>
+
+
+</html>

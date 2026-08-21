@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Add Task | AI Planner</title>
+
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+
+<h2>📚 AI Planner</h2>
+
+
+<ul>
+
+
+<li>
+<a href="/dashboard">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+</li>
+
+
+
+<li>
+<a href="/subjects">
+<i class="fa-solid fa-book"></i>
+Subjects
+</a>
+</li>
+
+
+
+
+<li class="active">
+
+<a href="/tasks">
+
+<i class="fa-solid fa-list-check"></i>
+
+Tasks
+
+</a>
+
+</li>
+
+
+
+
+<li>
+<a href="/schedule">
+<i class="fa-solid fa-calendar-days"></i>
+Study Schedule
+</a>
+</li>
+
+
+
+
+<li>
+<a href="/ai_planner">
+<i class="fa-solid fa-robot"></i>
+AI Planner
+</a>
+</li>
+
+
+
+
+<li>
+<a href="/my_plans">
+<i class="fa-solid fa-brain"></i>
+My AI Plans
+</a>
+</li>
+
+
+
+
+<li>
+<a href="/progress">
+<i class="fa-solid fa-chart-line"></i>
+Progress
+</a>
+</li>
+
+
+
+
+<li>
+<a href="/exams">
+<i class="fa-solid fa-calendar-check"></i>
+Exams
+</a>
+</li>
+
+
+
+
+<li>
+<a href="/logout">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+<!-- Main Content -->
+
+
+<main class="content">
+
+
+
+
+
+<div class="topbar">
+
+
+<div>
+
+<h2>📝 Add Task</h2>
+
+<p>Create a new study task</p>
+
+
+</div>
+
+
+
+<a href="/tasks">
+
+<button class="secondary">
+
+⬅ Back
+
+</button>
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="add-form">
+
+
+
+
+
+<form method="POST">
+
+
+
+
+
+<label>
+📚 Subject
+</label>
+
+<select name="subject" required>
+
+<option value="">
+Select Subject
+</option>
+
+{% for subject in subjects %}
+
+<option value="{{ subject[0] }}">
+
+{{ subject[0] }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+<label>
+📝 Task Name
+</label>
+
+
+<input
+
+type="text"
+
+name="task_name"
+
+placeholder="Enter task title"
+
+required>
+
+<label>
+📅 Deadline
+</label>
+
+
+<input
+
+type="date"
+
+name="deadline"
+
+required>
+
+<label>
+📌 Status
+</label>
+
+
+<select name="status">
+
+
+<option value="Pending">
+
+⏳ Pending
+
+</option>
+
+
+<option value="Completed">
+
+✅ Completed
+
+</option>
+
+
+</select>
+<button type="submit">
+
+➕ Add Task
+
+</button>
+
+</form>
+
+</div>
+
+</main>
+
+</div>
+
+</body>
+
+
+</html>

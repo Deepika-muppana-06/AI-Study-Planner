@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Tasks | AI Planner</title>
+
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+
+<body>
+
+
+
+<div class="dashboard">
+
+
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+
+<h2>📚 AI Planner</h2>
+
+
+<ul>
+
+
+<li>
+
+<a href="/dashboard">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="/subjects">
+
+<i class="fa-solid fa-book"></i>
+
+Subjects
+
+</a>
+
+</li>
+
+
+
+<li class="active">
+
+<a href="/tasks">
+
+<i class="fa-solid fa-list-check"></i>
+
+Tasks
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/schedule">
+
+<i class="fa-solid fa-calendar-days"></i>
+
+Study Schedule
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/ai_planner">
+
+<i class="fa-solid fa-robot"></i>
+
+AI Planner
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/my_plans">
+
+<i class="fa-solid fa-brain"></i>
+
+My AI Plans
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/progress">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Progress
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/exams">
+
+<i class="fa-solid fa-calendar-check"></i>
+
+Exams
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/logout">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+
+<!-- Main Content -->
+
+
+<main class="content">
+
+
+<div class="topbar">
+
+
+<div>
+
+
+<h2>📝 My Tasks</h2>
+
+
+<p>Manage your study tasks</p>
+
+
+</div>
+
+<a href="/add_task">
+
+
+<button>
+
+➕ Add Task
+
+</button>
+
+</a>
+</div>
+
+<div class="cards">
+
+{% if tasks %}
+
+{% for task in tasks %}
+
+<div class="card task-card">
+
+<h3>
+
+📝 {{ task[2] }}
+
+</h3>
+<p>
+
+📚 Subject:
+
+<strong>
+
+{{ task[1] }}
+
+</strong>
+
+</p>
+
+<p>
+
+📅 Deadline:
+
+<strong>
+
+{{ task[3] }}
+
+</strong>
+
+</p>
+
+{% if task[4] == "Completed" %}
+
+
+<div class="task-status completed">
+
+
+✅ Completed
+
+
+</div> <br><br>
+
+{% else %}
+
+<div class="task-status pending">
+
+
+⏳ Pending
+
+
+</div>
+
+<div class="task-actions">
+
+<a href="/complete_task/{{ task[0] }}">
+
+<button>
+
+
+✅ Complete
+
+
+</button>
+
+</a>
+
+<a href="/edit_task/{{ task[0] }}">
+<button class="edit-btn">
+
+✏️ Edit
+
+</button>
+
+</a> <br><br>
+
+</div>
+
+{% endif %}
+
+<a href="/delete_task/{{ task[0] }}"
+
+onclick="return confirm('Delete this task?');">
+
+<button class="delete-btn">
+
+🗑 Delete
+
+</button>
+</a>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+<div class="ai-box">
+
+<h2>
+
+No Tasks Yet 😌
+
+</h2>
+<p>
+
+Add your first study task.
+
+</p>
+
+</div>
+{% endif %}
+
+</div>
+</main>
+
+</div>
+
+</body>
+
+
+</html>

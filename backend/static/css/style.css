@@ -1,0 +1,1077 @@
+/* =====================================================
+                    RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:#f1f5f9;
+    color:#1e293b;
+    min-height:100vh;
+}
+
+/* =====================================================
+                    BUTTONS
+===================================================== */
+
+button{
+
+    border:none;
+    outline:none;
+    cursor:pointer;
+
+    padding:12px 22px;
+
+    border-radius:12px;
+
+    font-size:15px;
+    font-weight:600;
+
+    color:#fff;
+
+    background:linear-gradient(135deg,#06b6d4,#8b5cf6);
+
+    transition:.3s;
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(6,182,212,.35);
+
+}
+
+.secondary{
+
+    background:#e2e8f0;
+    color:#334155;
+
+}
+
+/* =====================================================
+                LOGIN / REGISTER / FORMS
+===================================================== */
+
+.form-page{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#020617;
+
+    padding:30px;
+
+}
+
+.hero-card,
+.form-card{
+
+    width:430px;
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:40px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
+
+    text-align:center;
+
+}
+
+.hero-card h1,
+.form-card h1{
+
+    color:#0f172a;
+
+    margin-bottom:15px;
+
+}
+
+.hero-card p,
+.form-card p{
+
+    color:#64748b;
+
+    margin-bottom:25px;
+
+    line-height:1.6;
+
+}
+
+form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid #cbd5e1;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    outline:none;
+
+    border-color:#06b6d4;
+
+    box-shadow:0 0 10px rgba(6,182,212,.2);
+
+}
+
+/* =====================================================
+                    DASHBOARD
+===================================================== */
+
+.dashboard{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* =====================================================
+                    SIDEBAR
+===================================================== */
+
+.sidebar{
+
+    width:260px;
+
+    background:#020617;
+
+    color:#fff;
+
+    padding:30px 20px;
+
+}
+
+.sidebar h2{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+    font-size:25px;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar li{
+
+    margin-bottom:12px;
+
+    border-radius:14px;
+
+    transition:.3s;
+
+}
+
+.sidebar li a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:15px;
+
+    text-decoration:none;
+
+    color:#94a3b8;
+
+    transition:.3s;
+
+}
+
+.sidebar li:hover,
+.sidebar .active{
+
+    background:linear-gradient(135deg,#06b6d4,#8b5cf6);
+
+}
+
+.sidebar li:hover a,
+.sidebar .active a{
+
+    color:#fff;
+
+}
+
+/* =====================================================
+                    CONTENT
+===================================================== */
+
+.content{
+
+    flex:1;
+
+    background:#f8fafc;
+
+    padding:40px;
+
+    overflow-y:auto;
+
+}
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+.topbar h2{
+
+    font-size:30px;
+
+    color:#0f172a;
+
+}
+
+.topbar p{
+
+    margin-top:5px;
+
+    color:#64748b;
+
+}
+
+.topbar a{
+
+    text-decoration:none;
+
+}
+
+/* =====================================================
+                    CARDS
+===================================================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:25px;
+
+}
+
+.card{
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+}
+
+.card h2{
+
+    color:#8b5cf6;
+
+    font-size:34px;
+
+    margin-top:15px;
+
+}
+
+.card h3{
+
+    color:#334155;
+
+    margin-bottom:15px;
+
+}
+
+.card p{
+
+    color:#64748b;
+
+    line-height:1.6;
+
+}
+
+/* =====================================================
+                GRID BOXES
+===================================================== */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+.box{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.box h3{
+
+    margin-bottom:18px;
+
+}
+
+.box button{
+
+    width:100%;
+
+    margin-top:20px;
+
+}
+
+/* =====================================================
+                PROGRESS BAR
+===================================================== */
+
+.progress-card{
+
+    background:#fff;
+
+    margin-top:30px;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:14px;
+
+    background:#e2e8f0;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin:20px 0;
+
+}
+
+.progress{
+
+    height:100%;
+
+    background:linear-gradient(135deg,#06b6d4,#8b5cf6);
+
+    border-radius:20px;
+
+}
+
+/* =====================================================
+                    AI BOX
+===================================================== */
+
+.ai-box{
+
+    margin-top:30px;
+
+    background:#eef2ff;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    border-left:6px solid #8b5cf6;
+
+}
+
+
+.ai-box h2{
+
+    margin-bottom:10px;
+
+}
+
+
+.ai-box p{
+
+    color:#64748b;
+
+}
+
+
+/* ================= ADD FORM ================= */
+
+.add-form{
+
+    width:100%;
+
+    max-width:700px;
+
+    margin-top:25px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+}
+
+
+.add-form label{
+
+    display:block;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#334155;
+
+    margin-bottom:10px;
+
+}
+
+
+.add-form input,
+.add-form select{
+
+    width:100%;
+
+    margin-bottom:22px;
+
+}
+
+
+.add-form button{
+
+    width:220px;
+
+}
+
+
+/* =====================================================
+                AI PLAN DISPLAY
+===================================================== */
+
+
+.plan-container{
+
+    width:100%;
+
+}
+
+
+.plan-card{
+
+    background:#ffffff;
+
+    padding:30px;
+
+    margin:25px 0;
+
+    border-radius:22px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.08);
+
+}
+
+
+.plan-title{
+
+    font-size:28px;
+
+    color:#4f46e5;
+
+    margin-bottom:20px;
+
+}
+
+
+
+/* AI CONTENT MAIN BOX */
+
+.ai-plan-content{
+
+    background:#ffffff;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+
+    width:100%;
+
+    max-width:1000px;
+
+    margin:auto;
+
+    color:#374151;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+}
+
+
+/* HEADINGS */
+
+
+.ai-plan-content h1{
+
+    font-size:26px;
+
+    color:#111827;
+
+    margin-bottom:20px;
+
+}
+
+
+.ai-plan-content h2{
+
+    font-size:21px;
+
+    margin-top:25px;
+
+    color:#4f46e5;
+
+}
+
+
+.ai-plan-content h3{
+
+    font-size:18px;
+
+    margin-top:20px;
+
+    color:#334155;
+
+}
+
+
+
+/* PARAGRAPHS */
+
+.ai-plan-content p{
+
+    margin:12px 0;
+
+    font-size:15px;
+
+    font-weight:400;
+
+    color:#4b5563;
+
+}
+
+
+
+/* LIST */
+
+.ai-plan-content ul{
+
+    margin:15px 0 15px 25px;
+
+}
+
+
+.ai-plan-content li{
+
+    margin:8px 0;
+
+}
+
+
+
+/* TABLE */
+
+.ai-plan-content table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin:25px 0;
+
+    background:white;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+
+
+.ai-plan-content th{
+
+    background:#eef2ff;
+
+    color:#312e81;
+
+    padding:14px;
+
+    border:1px solid #e5e7eb;
+
+    text-align:left;
+
+    font-weight:700;
+
+}
+
+
+
+.ai-plan-content td{
+
+    padding:14px;
+
+    border:1px solid #e5e7eb;
+
+    color:#374151;
+
+    font-size:14px;
+
+}
+
+
+
+.ai-plan-content tr:hover{
+
+    background:#f8fafc;
+
+}
+
+
+
+/* BOLD TEXT */
+
+.ai-plan-content strong{
+
+    color:#111827;
+
+    font-weight:700;
+
+}
+/* ================= PROGRESS LAYOUT ================= */
+
+
+.progress-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+
+
+/* ================= ACHIEVEMENT STYLE ================= */
+
+
+.achievement-box{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:22px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+
+
+.achievement-box h2{
+
+    color:#4f46e5;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.achievement{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    background:#f8fafc;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.achievement-icon{
+
+    font-size:40px;
+
+}
+
+
+
+.achievement h3{
+
+    margin:0;
+
+    color:#334155;
+
+}
+
+
+
+.achievement p{
+
+    margin-top:5px;
+
+    color:#64748b;
+
+    font-weight:600;
+
+}
+
+
+
+.achievement:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.1);
+
+}
+
+
+
+.badge-icon{
+
+    font-size:28px;
+
+}
+.edit-btn{
+
+    background:#22c55e;
+
+    margin-top:15px;
+
+}
+
+
+.edit-btn:hover{
+
+    background:#16a34a;
+
+}
+
+@media(max-width:900px){
+
+.progress-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+/* AI PLANNER */
+
+
+.ai-hero{
+
+background:linear-gradient(135deg,#06b6d4,#8b5cf6);
+
+color:white;
+
+padding:25px;
+
+border-radius:22px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+}
+
+
+.ai-hero h1{
+
+margin-bottom:8px;
+
+}
+
+
+.ai-icon{
+
+font-size:60px;
+
+}
+
+
+
+
+.ai-form{
+
+max-width:100%;
+
+}
+
+
+
+
+.form-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:20px;
+
+}
+
+
+
+.ai-form textarea{
+
+min-height:90px;
+
+}
+
+
+
+@media(max-width:800px){
+
+.form-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+
+/* ================= DASHBOARD UPGRADE ================= */
+
+
+.welcome-card{
+
+    background:linear-gradient(135deg,#06b6d4,#8b5cf6);
+
+    color:white;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.welcome-card h1{
+
+    font-size:32px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.welcome-card p{
+
+    font-size:16px;
+
+    opacity:.9;
+
+}
+
+
+
+.welcome-icon{
+
+    font-size:70px;
+
+}
+
+
+
+
+.dashboard-cards .stat-card{
+
+    min-height:150px;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+.dashboard-cards .stat-card h2{
+
+    font-size:42px;
+
+}
+
+
+
+.stat-card p{
+
+    margin-top:8px;
+
+    color:#64748b;
+
+}
+
+
+
+
+
+.stat-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:-30px;
+
+    bottom:-30px;
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:#eef2ff;
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .content{
+
+        padding:20px;
+
+    }
+
+
+    .ai-plan-content{
+
+        padding:20px;
+
+        overflow-x:auto;
+
+    }
+
+
+    .ai-plan-content table{
+
+        min-width:700px;
+
+    }
+
+}

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard | AI Study Planner</title>
+
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+
+<h2>📚 AI Planner</h2>
+
+
+<ul>
+
+
+<li class="active">
+
+<a href="/dashboard">
+
+<i class="fa-solid fa-house"></i>
+Dashboard
+
+</a>
+
+</li>
+
+
+
+<li>
+<a href="/subjects">
+<i class="fa-solid fa-book"></i>
+Subjects
+</a>
+</li>
+
+
+
+<li>
+<a href="/tasks">
+<i class="fa-solid fa-list-check"></i>
+Tasks
+</a>
+</li>
+
+
+
+<li>
+<a href="/schedule">
+<i class="fa-solid fa-calendar-days"></i>
+Study Schedule
+</a>
+</li>
+
+
+
+<li>
+<a href="/ai_planner">
+<i class="fa-solid fa-robot"></i>
+AI Planner
+</a>
+</li>
+
+
+
+<li>
+<a href="/my_plans">
+<i class="fa-solid fa-brain"></i>
+My AI Plans
+</a>
+</li>
+
+
+
+<li>
+<a href="/progress">
+<i class="fa-solid fa-chart-line"></i>
+Progress
+</a>
+</li>
+
+
+
+<li>
+<a href="/exams">
+<i class="fa-solid fa-calendar-check"></i>
+Exams
+</a>
+</li>
+
+
+
+<li>
+<a href="/logout">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+<!-- Content -->
+
+
+<main class="content">
+
+<div class="topbar">
+
+
+<div>
+
+
+<h2>Hello {{user_name}} 👋</h2>
+
+<p>Let's achieve today's study goals!</p>
+
+
+</div>
+
+
+
+<a href="/ai_planner">
+
+<button>
+
+🤖 Generate AI Plan
+
+</button>
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Welcome -->
+
+<div class="welcome-card">
+
+
+<div>
+
+<h2>
+
+Ready to learn today? 🚀
+
+</h2>
+
+
+<p>
+
+Stay consistent and complete your goals.
+
+</p>
+
+
+</div>
+
+
+<div class="welcome-icon">
+
+🤖
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Stats -->
+
+
+<div class="cards dashboard-cards">
+
+
+
+<div class="card stat-card">
+
+<h3>📚 Subjects</h3>
+
+<h2>{{subject_count}}</h2>
+
+<p>Learning areas</p>
+
+</div>
+
+
+
+
+<div class="card stat-card">
+
+<h3>📝 Pending Tasks</h3>
+
+<h2>{{pending_tasks}}</h2>
+
+<p>Need focus</p>
+
+</div>
+
+
+
+
+
+<div class="card stat-card">
+
+<h3>✅ Completed</h3>
+
+<h2>{{completed_tasks}}</h2>
+
+<p>Finished</p>
+
+</div>
+
+
+
+
+
+<div class="card stat-card">
+
+<h3>📅 Exams</h3>
+
+<h2>{{exam_count}}</h2>
+
+<p>Upcoming</p>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Progress -->
+
+
+<div class="progress-card">
+
+
+<h3>📊 Study Progress</h3>
+
+
+<div class="progress-bar">
+
+
+<div class="progress"
+
+style="width:{{progress}}%;">
+
+</div>
+
+
+</div>
+
+
+<p>
+
+{{progress}}% Completed 🎯
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Main Grid -->
+
+
+<div class="grid">
+
+
+
+
+
+<div class="box">
+
+
+<h3>📅 Today's Schedule</h3>
+
+
+{% if schedules %}
+
+
+{% for schedule in schedules %}
+
+
+<p>
+
+🕒 {{schedule[0]}} - {{schedule[1]}}
+
+<br>
+
+📘 {{schedule[2]}}
+
+</p>
+
+
+<hr>
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+<p>No sessions today 🎉</p>
+
+
+{% endif %}
+
+
+</div>
+
+
+
+
+
+
+
+<div class="box">
+
+
+<h3>⏳ Upcoming Schedule</h3>
+
+
+{% if upcoming_schedules %}
+
+
+{% for schedule in upcoming_schedules %}
+
+
+<p>
+
+📅 {{schedule[0]}}
+
+<br>
+
+🕒 {{schedule[1]}} - {{schedule[2]}}
+
+<br>
+
+📘 {{schedule[3]}}
+
+
+</p>
+
+
+<hr>
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+<p>No upcoming sessions 🎉</p>
+
+
+{% endif %}
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<h3>📅 Upcoming Exams</h3>
+
+
+{% if upcoming_exams %}
+
+
+{% for exam in upcoming_exams %}
+
+
+<p>
+
+📘 <b>{{exam[0]}}</b>
+
+<br>
+
+{{exam[1]}}
+
+<br>
+
+🗓 {{exam[2]}}
+
+
+</p>
+
+
+<hr>
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+<p>No exams 🎉</p>
+
+
+{% endif %}
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<h3>🤖 AI Insights</h3>
+
+
+{% for insight in insights %}
+
+
+<p>
+
+💡 {{insight}}
+
+</p>
+
+
+<hr>
+
+
+{% endfor %}
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="box">
+
+
+<h3>🔥 Quick Actions</h3>
+
+
+<a href="/add_subject">
+
+<button>
+
+➕ Subject
+
+</button>
+
+</a>
+
+
+
+<a href="/add_task">
+
+<button>
+
+📝 Task
+
+</button>
+
+</a>
+
+
+
+<a href="/add_exam">
+
+<button>
+
+📅 Exam
+
+</button>
+
+</a>
+
+
+
+<a href="/add_schedule">
+
+<button>
+
+🗓 Schedule
+
+</button>
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="ai-box">
+
+
+<h3>🤖 AI Recommendation</h3>
+
+
+<p>
+
+{{recommendations}}
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+</main>
+
+
+</div>
+
+
+<script>
+
+
+const menu = document.querySelector(".mobile-menu");
+
+const sidebar = document.querySelector(".sidebar");
+
+
+menu.onclick = () => {
+
+sidebar.classList.toggle("show");
+
+};
+
+
+</script>
+
+
+
+
+</body>
+
+</html>

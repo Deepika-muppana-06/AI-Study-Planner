@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+<title>Edit Task | AI Planner</title>
+
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="form-page">
+
+
+<div class="add-form">
+
+
+<h2>✏️ Edit Task</h2>
+
+
+
+<form method="POST">
+
+
+
+<label>
+📚 Subject
+</label>
+
+
+<input
+
+type="text"
+
+name="subject"
+
+value="{{task[1]}}"
+
+required>
+
+
+
+
+<label>
+📝 Task Name
+</label>
+
+
+<input
+
+type="text"
+
+name="task_name"
+
+value="{{task[2]}}"
+
+required>
+
+
+
+
+
+<label>
+📅 Deadline
+</label>
+
+
+<input
+
+type="date"
+
+name="deadline"
+
+value="{{task[3]}}"
+
+required>
+
+
+
+
+
+
+<label>
+📌 Status
+</label>
+
+
+<select name="status">
+
+
+
+<option value="Pending"
+
+{% if task[5]=="Pending" %}
+
+selected
+
+{% endif %}
+
+>
+
+⏳ Pending
+
+</option>
+
+
+
+
+
+<option value="Completed"
+
+{% if task[5]=="Completed" %}
+
+selected
+
+{% endif %}
+
+>
+
+✅ Completed
+
+</option>
+
+
+
+</select>
+
+
+
+
+
+<button type="submit">
+
+💾 Update Task
+
+</button>
+
+
+
+
+<a href="/tasks">
+
+<button type="button"
+class="secondary">
+
+Cancel
+
+</button>
+
+</a>
+
+
+
+
+</form>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Add Schedule | AI Planner</title>
+
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+<body>
+
+
+<div class="dashboard">
+
+
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+
+<h2>📚 AI Planner</h2>
+
+
+
+<ul>
+
+
+
+<li>
+
+<a href="/dashboard">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/subjects">
+
+<i class="fa-solid fa-book"></i>
+
+Subjects
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/tasks">
+
+<i class="fa-solid fa-list-check"></i>
+
+Tasks
+
+</a>
+
+</li>
+
+
+
+<li class="active">
+
+<a href="/schedule">
+
+<i class="fa-solid fa-calendar-days"></i>
+
+Study Schedule
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/ai_planner">
+
+<i class="fa-solid fa-robot"></i>
+
+AI Planner
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/my_plans">
+
+<i class="fa-solid da-brain"></i>
+
+My AI Plans
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/exams">
+
+<i class="fa-solid fa-calendar-check"></i>
+
+Exams
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/progress">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Progress
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/logout">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+
+
+<!-- Main -->
+
+
+<main class="content">
+
+<div class="topbar">
+
+
+<div>
+
+
+<h2>📅 Create Schedule</h2>
+
+
+<p>
+Plan your daily study time
+</p>
+
+
+</div>
+
+
+
+<a href="/schedule">
+
+<button>
+
+⬅ Back
+
+</button>
+
+</a>
+
+
+
+</div>
+
+<div class="box add-form">
+
+<form method="POST">
+
+<input
+type="date"
+name="study_date"
+required>
+
+
+
+
+<input
+type="time"
+name="start_time"
+required>
+
+
+
+
+<input
+type="time"
+name="end_time"
+required>
+
+
+
+
+<input
+type="text"
+name="topic"
+placeholder="Study Topic"
+required>
+
+
+
+
+<button type="submit">
+
+Save Schedule
+
+</button>
+
+
+
+</form>
+
+
+
+</div>
+
+</main>
+
+
+
+</div>
+
+<script>
+
+const menu = document.querySelector(".mobile-menu");
+
+const sidebar = document.querySelector(".sidebar");
+
+
+menu.onclick = () => {
+
+    sidebar.classList.toggle("show");
+
+};
+
+
+</script>
+
+</body>
+
+</html>

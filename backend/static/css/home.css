@@ -1,0 +1,458 @@
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    font-family:'Segoe UI',sans-serif;
+
+    background:
+    linear-gradient(
+        135deg,
+        #020617,
+        #0f172a
+    );
+
+    color:white;
+
+    min-height:100vh;
+
+}
+
+
+
+/* ================= NAVBAR ================= */
+
+
+.navbar{
+
+
+    width:90%;
+
+    margin:auto;
+
+    padding:25px 0;
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+
+}
+
+
+
+.navbar h2{
+
+
+    font-size:28px;
+
+
+    background:
+    linear-gradient(
+    90deg,
+    #06b6d4,
+    #8b5cf6
+    );
+
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+}
+
+
+
+.nav-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+
+
+
+/* ================= BUTTONS ================= */
+
+
+button{
+
+
+    border:none;
+
+    padding:12px 28px;
+
+
+    border-radius:12px;
+
+
+    cursor:pointer;
+
+
+    font-size:15px;
+
+    font-weight:600;
+
+
+    color:white;
+
+
+    background:
+    linear-gradient(
+    90deg,
+    #06b6d4,
+    #8b5cf6
+    );
+
+
+    transition:.3s;
+
+
+}
+
+
+
+button:hover{
+
+
+    transform:translateY(-4px);
+
+
+    box-shadow:
+    0 15px 30px rgba(6,182,212,.3);
+
+
+}
+
+
+
+.secondary{
+
+
+    background:transparent;
+
+    border:2px solid #06b6d4;
+
+    color:#06b6d4;
+
+}
+
+
+
+
+/* ================= HERO ================= */
+
+
+.hero{
+
+
+    width:90%;
+
+    margin:70px auto;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+    gap:50px;
+
+
+}
+
+
+
+.hero-text{
+
+    flex:1;
+
+}
+
+
+
+.hero-text h1{
+
+
+    font-size:58px;
+
+    line-height:1.2;
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+.hero-text span{
+
+
+    background:
+    linear-gradient(
+    90deg,
+    #06b6d4,
+    #8b5cf6
+    );
+
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+
+}
+
+
+
+
+.hero-text p{
+
+
+    color:#cbd5e1;
+
+
+    font-size:19px;
+
+
+    line-height:1.8;
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+
+
+
+/* ================= AI ICON ================= */
+
+
+.hero-image{
+
+
+    flex:1;
+
+    text-align:center;
+
+
+}
+
+
+
+.hero-image i{
+
+
+    font-size:230px;
+
+
+    color:#06b6d4;
+
+
+    filter:
+    drop-shadow(
+    0 0 30px rgba(6,182,212,.5)
+    );
+
+
+    animation:float 3s ease-in-out infinite;
+
+
+}
+
+
+
+
+@keyframes float{
+
+
+0%{
+
+transform:translateY(0);
+
+}
+
+
+50%{
+
+transform:translateY(-20px);
+
+}
+
+
+100%{
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+
+
+/* ================= FEATURES ================= */
+
+
+.features{
+
+
+    width:90%;
+
+    margin:80px auto;
+
+
+    display:grid;
+
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+
+    gap:25px;
+
+
+}
+
+
+
+
+.feature-card{
+
+
+    background:
+    rgba(255,255,255,.08);
+
+
+    backdrop-filter:blur(10px);
+
+
+    padding:30px;
+
+
+    border-radius:22px;
+
+
+    text-align:center;
+
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
+
+    transition:.3s;
+
+
+}
+
+.feature-card:hover{
+
+
+    transform:translateY(-10px);
+
+
+    box-shadow:
+    0 20px 40px rgba(6,182,212,.2);
+
+
+}
+
+
+.feature-card h3{
+
+
+    margin:20px 0;
+
+
+    color:#f8fafc;
+
+
+}
+
+
+
+.feature-card p{
+
+
+    color:#cbd5e1;
+
+
+    line-height:1.6;
+
+
+}
+
+
+
+
+/* ================= RESPONSIVE ================= */
+
+
+@media(max-width:900px){
+
+
+.hero{
+    flex-direction:column-reverse;
+
+    text-align:center;
+
+}
+
+.hero-text h1{
+
+
+    font-size:40px;
+}
+
+.hero-buttons{
+
+
+    justify-content:center;
+
+
+}
+
+.hero-image i{
+
+
+    font-size:150px;
+}
+
+.navbar{
+
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+}

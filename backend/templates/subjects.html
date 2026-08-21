@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Subjects | AI Planner</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+
+<h2>📚 AI Planner</h2>
+
+
+<ul>
+
+
+<li>
+<a href="/dashboard">
+
+<i class="fa-solid fa-house"></i>
+Dashboard
+
+</a>
+</li>
+
+
+
+<li class="active">
+
+<a href="/subjects">
+
+<i class="fa-solid fa-book"></i>
+
+Subjects
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/tasks">
+
+<i class="fa-solid fa-list-check"></i>
+
+Tasks
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/schedule">
+
+<i class="fa-solid fa-calendar-days"></i>
+
+Study Schedule
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/ai_planner">
+
+<i class="fa-solid fa-robot"></i>
+
+AI Planner
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/my_plans">
+
+<i class="fa-solid fa-brain"></i>
+
+My AI Plans
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="/progress">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Progress
+
+</a>
+
+</li>
+
+<li>
+
+<a href="/exams">
+
+<i class="fa-solid fa-calendar-check"></i>
+
+Exams
+
+</a>
+
+</li>
+
+<li>
+
+<a href="/logout">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+<!-- Content -->
+
+<main class="content">
+
+
+<div class="topbar">
+
+
+<div>
+
+<h2>📚 My Subjects</h2>
+
+<p>
+Manage your subjects
+</p>
+
+</div>
+
+
+
+<a href="/add_subject">
+
+<button class="generate-btn">
+
++ Add Subject
+
+</button>
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+<div class="cards">
+
+
+{% for subject in subjects %}
+
+
+<div class="card">
+
+
+<h3>
+
+📘 {{ subject[2] }}
+
+</h3>
+
+
+</div>
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+</main>
+
+
+</div>
+
+
+</body>
+
+</html>

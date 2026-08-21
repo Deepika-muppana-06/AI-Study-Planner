@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Progress | AI Planner</title>
+
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+
+<h2>📚 AI Planner</h2>
+
+
+<ul>
+
+
+<li>
+<a href="/dashboard">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+</li>
+
+
+<li>
+<a href="/subjects">
+<i class="fa-solid fa-book"></i>
+Subjects
+</a>
+</li>
+
+
+<li>
+<a href="/tasks">
+<i class="fa-solid fa-list-check"></i>
+Tasks
+</a>
+</li>
+
+
+<li>
+<a href="/schedule">
+<i class="fa-solid fa-calendar-days"></i>
+Study Schedule
+</a>
+</li>
+
+
+<li>
+<a href="/ai_planner">
+<i class="fa-solid fa-robot"></i>
+AI Planner
+</a>
+</li>
+
+
+<li>
+<a href="/my_plans">
+<i class="fa-solid fa-brain"></i>
+My AI Plans
+</a>
+</li>
+
+
+<li class="active">
+
+<a href="/progress">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Progress
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="/exams">
+
+<i class="fa-solid fa-calendar-check"></i>
+
+Exams
+
+</a>
+
+</li>
+
+
+<li>
+
+<a href="/logout">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+
+</ul>
+
+
+</aside>
+
+
+
+
+
+<!-- Main Content -->
+
+
+<main class="content progress-page">
+
+
+
+<div class="topbar">
+
+
+<div>
+
+<h2>Your Progress 📊</h2>
+
+<p>Track your study growth</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- Stats Cards -->
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+<h3>📈 Overall Completion</h3>
+
+<h2>
+{{progress}}%
+</h2>
+
+<p>
+Completed 🎯
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>📝 Total Tasks</h3>
+
+<h2>
+{{total_tasks}}
+</h2>
+
+<p>
+Tasks created
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>✅ Completed</h3>
+
+<h2>
+{{completed_tasks}}
+</h2>
+
+<p>
+Tasks finished
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>🔥 Remaining</h3>
+
+<h2>
+{{ total_tasks - completed_tasks }}
+</h2>
+
+<p>
+Keep going 💪
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Progress + Achievements -->
+
+
+<div class="progress-grid">
+
+
+
+
+
+<!-- Progress Card -->
+
+
+<div class="progress-card">
+
+
+<h2>📊 Study Progress</h2>
+
+
+
+<div class="progress-bar">
+
+
+<div class="progress"
+
+style="width: {{progress}}%;">
+
+</div>
+
+
+</div>
+
+
+
+
+<h3>
+{{progress}}% Completed
+</h3>
+
+
+
+
+<p>
+
+
+{% if progress >= 75 %}
+
+Amazing! Your consistency is excellent. Keep maintaining your pace 🔥
+
+
+{% elif progress >= 40 %}
+
+
+Good progress! Complete your remaining tasks and improve daily 💪
+
+
+{% else %}
+
+
+Start your journey today. Small steps create big results 🌱
+
+
+{% endif %}
+
+
+
+</p>
+
+
+
+</div>
+
+<!-- Dynamic Achievements -->
+
+
+<div class="achievement-box">
+
+
+<h2>🏆 Achievements</h2>
+
+
+{% for achievement in achievements %}
+
+
+<div class="achievement">
+
+
+<div class="achievement-icon">
+
+{{ achievement.icon }}
+
+</div>
+
+
+<div>
+
+<h3>
+{{ achievement.title }}
+</h3>
+
+
+<p>
+{{ achievement.percent }}% Progress
+</p>
+
+
+</div>
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+</div>
+
+</main>
+
+
+</div>
+
+
+</body>
+
+
+</html>
