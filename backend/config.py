@@ -1,3 +1,4 @@
+import os
 import mysql.connector
 import google.generativeai as genai
 db = mysql.connector.connect(
@@ -8,7 +9,8 @@ db = mysql.connector.connect(
 )
 
 print("Database Connected Successfully!")
-GEMINI_API_KEY = ""
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 genai.configure(api_key=GEMINI_API_KEY)
 
