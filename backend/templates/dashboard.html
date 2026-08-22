@@ -3,20 +3,19 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard | AI Study Planner</title>
+    <title>Dashboard | Study Planner</title>
 
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
-
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
 
@@ -27,607 +26,997 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 <div class="dashboard">
 
 
+    <!-- =====================================================
+                         SIDEBAR
+    ====================================================== -->
 
-<!-- Sidebar -->
-
-<aside class="sidebar">
-
-
-<h2>📚 AI Planner</h2>
+    <aside class="sidebar">
 
 
-<ul>
+        <!-- BRAND -->
 
+        <div class="sidebar-brand">
 
-<li class="active">
+            <div class="brand-icon">
 
-<a href="/dashboard">
+                <i class="fa-solid fa-book-open"></i>
 
-<i class="fa-solid fa-house"></i>
-Dashboard
+            </div>
 
-</a>
+            <div>
 
-</li>
+                <h2>Study Planner</h2>
 
+                <span>Stay organized. Learn better.</span>
 
+            </div>
 
-<li>
-<a href="/subjects">
-<i class="fa-solid fa-book"></i>
-Subjects
-</a>
-</li>
+        </div>
 
 
 
-<li>
-<a href="/tasks">
-<i class="fa-solid fa-list-check"></i>
-Tasks
-</a>
-</li>
+        <!-- MAIN NAVIGATION -->
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-label">
+                MAIN
+            </div>
+
+
+            <ul>
+
+                <!-- Dashboard -->
+
+                <li class="active">
+
+                    <a href="/dashboard">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        <span>Dashboard</span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- Subjects -->
+
+                <li>
+
+                    <a href="/subjects">
+
+                        <i class="fa-solid fa-book"></i>
+
+                        <span>Subjects</span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- Tasks -->
+
+                <li>
+
+                    <a href="/tasks">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                        <span>Tasks</span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- Schedule -->
+
+                <li>
+
+                    <a href="/schedule">
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                        <span>Study Schedule</span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- Exams -->
+
+                <li>
+
+                    <a href="/exams">
+
+                        <i class="fa-solid fa-calendar-check"></i>
+
+                        <span>Exams</span>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
 
 
 
-<li>
-<a href="/schedule">
-<i class="fa-solid fa-calendar-days"></i>
-Study Schedule
-</a>
-</li>
+        <!-- PLANNING -->
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-label">
+                PLANNING
+            </div>
+
+
+            <ul>
+
+
+                <!-- AI Planner -->
+
+                <li>
+
+                    <a href="/ai_planner">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                        <span>AI Planner</span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- My Plans -->
+
+                <li>
+
+                    <a href="/my_plans">
+
+                        <i class="fa-solid fa-file-lines"></i>
+
+                        <span>My Plans</span>
+
+                    </a>
+
+                </li>
+
+
+                <!-- Progress -->
+
+                <li>
+
+                    <a href="/progress">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        <span>Progress</span>
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </div>
 
 
 
-<li>
-<a href="/ai_planner">
-<i class="fa-solid fa-robot"></i>
-AI Planner
-</a>
-</li>
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <a href="/logout" class="logout-link">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+
+    </aside>
 
 
 
-<li>
-<a href="/my_plans">
-<i class="fa-solid fa-brain"></i>
-My AI Plans
-</a>
-</li>
+    <!-- =====================================================
+                         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="content">
+
+
+        <!-- =================================================
+                             TOPBAR
+        ================================================== -->
+
+        <div class="topbar">
+
+
+            <div>
+
+                <div class="page-label">
+                    STUDENT DASHBOARD
+                </div>
+
+
+                <h1>
+                    Hello, {{ user_name }} 👋
+                </h1>
+
+
+                <p class="topbar-subtitle">
+                    Here's an overview of your study activity.
+                </p>
+
+            </div>
 
 
 
-<li>
-<a href="/progress">
-<i class="fa-solid fa-chart-line"></i>
-Progress
-</a>
-</li>
+            <div class="topbar-action">
+
+                <a href="/ai_planner">
+
+                    <button class="primary-btn">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                        Create Study Plan
+
+                    </button>
+
+                </a>
+
+            </div>
+
+
+        </div>
 
 
 
-<li>
-<a href="/exams">
-<i class="fa-solid fa-calendar-check"></i>
-Exams
-</a>
-</li>
+        <!-- =================================================
+                         WELCOME CARD
+        ================================================== -->
+
+        <div class="welcome-card">
+
+
+            <div class="welcome-content">
+
+
+                <div class="welcome-tag">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    Keep going
+
+                </div>
+
+
+                <h2>
+                    Ready to make progress today?
+                </h2>
+
+
+                <p>
+                    Stay consistent with your study routine,
+                    keep track of your tasks, and work towards
+                    your upcoming exams one step at a time.
+                </p>
+
+
+            </div>
 
 
 
-<li>
-<a href="/logout">
-<i class="fa-solid fa-right-from-bracket"></i>
-Logout
-</a>
-</li>
+            <div class="welcome-decoration">
+
+                <div class="welcome-circle">
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                </div>
+
+            </div>
 
 
-</ul>
-
-
-</aside>
-
-
+        </div>
 
 
 
-<!-- Content -->
+        <!-- =================================================
+                         STATISTICS
+        ================================================== -->
+
+        <div class="section-heading">
+
+            <h2>
+                Your Overview
+            </h2>
+
+            <p>
+                A quick look at your current study activity.
+            </p>
+
+        </div>
 
 
-<main class="content">
 
-<div class="topbar">
-
-
-<div>
+        <div class="dashboard-cards">
 
 
-<h2>Hello {{user_name}} 👋</h2>
+            <!-- SUBJECTS -->
 
-<p>Let's achieve today's study goals!</p>
+            <div class="stat-card">
+
+
+                <div class="stat-top">
+
+                    <div class="stat-icon subjects-icon">
+
+                        <i class="fa-solid fa-book"></i>
+
+                    </div>
+
+                    <span class="stat-status">
+                        Total
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    {{ subject_count }}
+                </h2>
+
+
+                <h3>
+                    Subjects
+                </h3>
+
+
+                <p>
+                    Learning areas
+                </p>
+
+
+            </div>
+
+
+
+            <!-- PENDING TASKS -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-top">
+
+                    <div class="stat-icon pending-icon">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                    </div>
+
+                    <span class="stat-status">
+                        Pending
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    {{ pending_tasks }}
+                </h2>
+
+
+                <h3>
+                    Pending Tasks
+                </h3>
+
+
+                <p>
+                    Tasks that need attention
+                </p>
+
+
+            </div>
+
+
+
+            <!-- COMPLETED -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-top">
+
+                    <div class="stat-icon completed-icon">
+
+                        <i class="fa-solid fa-check"></i>
+
+                    </div>
+
+                    <span class="stat-status">
+                        Done
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    {{ completed_tasks }}
+                </h2>
+
+
+                <h3>
+                    Completed Tasks
+                </h3>
+
+
+                <p>
+                    Tasks you've finished
+                </p>
+
+
+            </div>
+
+
+
+            <!-- EXAMS -->
+
+            <div class="stat-card">
+
+
+                <div class="stat-top">
+
+                    <div class="stat-icon exam-icon">
+
+                        <i class="fa-solid fa-calendar-check"></i>
+
+                    </div>
+
+                    <span class="stat-status">
+                        Upcoming
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    {{ exam_count }}
+                </h2>
+
+
+                <h3>
+                    Exams
+                </h3>
+
+
+                <p>
+                    Upcoming examinations
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+                     PROGRESS + QUICK ACTIONS
+        ================================================== -->
+
+        <div class="dashboard-grid">
+
+
+            <!-- PROGRESS -->
+
+            <div class="dashboard-panel progress-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            Study Progress
+                        </h3>
+
+                        <p>
+                            Your overall task completion
+                        </p>
+
+                    </div>
+
+
+                    <div class="progress-percentage">
+
+                        {{ progress }}%
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="progress-bar">
+
+                    <div class="progress"
+                         style="width:{{ progress }}%;">
+                    </div>
+
+                </div>
+
+
+
+                <div class="progress-footer">
+
+                    <span>
+                        Overall completion
+                    </span>
+
+                    <span>
+
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+
+                        Keep it up!
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="dashboard-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            Quick Actions
+                        </h3>
+
+                        <p>
+                            Add something new
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="quick-actions">
+
+
+                    <a href="/add_subject">
+
+                        <i class="fa-solid fa-book"></i>
+
+                        Add Subject
+
+                    </a>
+
+
+                    <a href="/add_task">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Add Task
+
+                    </a>
+
+
+                    <a href="/add_exam">
+
+                        <i class="fa-solid fa-calendar-plus"></i>
+
+                        Add Exam
+
+                    </a>
+
+
+                    <a href="/add_schedule">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                        Add Schedule
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+                       TODAY + EXAMS
+        ================================================== -->
+
+        <div class="dashboard-grid large-grid">
+
+
+            <!-- TODAY'S SCHEDULE -->
+
+            <div class="dashboard-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            Today's Schedule
+                        </h3>
+
+                        <p>
+                            Your study sessions for today
+                        </p>
+
+                    </div>
+
+
+                    <a href="/schedule" class="view-link">
+                        View all
+                    </a>
+
+                </div>
+
+
+
+                <div class="schedule-list">
+
+
+                    {% if schedules %}
+
+
+                        {% for schedule in schedules %}
+
+
+                        <div class="schedule-item">
+
+
+                            <div class="schedule-time">
+
+                                <span>
+                                    {{ schedule[0] }}
+                                </span>
+
+                                <small>
+                                    {{ schedule[1] }}
+                                </small>
+
+                            </div>
+
+
+                            <div class="schedule-line"></div>
+
+
+                            <div class="schedule-info">
+
+                                <h4>
+                                    {{ schedule[2] }}
+                                </h4>
+
+                                <p>
+
+                                    <i class="fa-regular fa-clock"></i>
+
+                                    Study session
+
+                                </p>
+
+                            </div>
+
+
+                        </div>
+
+
+                        {% endfor %}
+
+
+                    {% else %}
+
+
+                        <div class="empty-state">
+
+                            <i class="fa-regular fa-calendar-check"></i>
+
+                            <h4>
+                                No sessions today
+                            </h4>
+
+                            <p>
+                                Your schedule is clear for today.
+                            </p>
+
+                        </div>
+
+
+                    {% endif %}
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- UPCOMING EXAMS -->
+
+            <div class="dashboard-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            Upcoming Exams
+                        </h3>
+
+                        <p>
+                            Keep an eye on important dates
+                        </p>
+
+                    </div>
+
+
+                    <a href="/exams" class="view-link">
+                        View all
+                    </a>
+
+                </div>
+
+
+
+                <div class="exam-list">
+
+
+                    {% if upcoming_exams %}
+
+
+                        {% for exam in upcoming_exams %}
+
+
+                        <div class="exam-item">
+
+
+                            <div class="exam-date">
+
+                                <i class="fa-solid fa-calendar-day"></i>
+
+                            </div>
+
+
+                            <div class="exam-info">
+
+                                <h4>
+                                    {{ exam[0] }}
+                                </h4>
+
+                                <p>
+                                    {{ exam[1] }}
+                                </p>
+
+                                <span>
+
+                                    <i class="fa-regular fa-calendar"></i>
+
+                                    {{ exam[2] }}
+
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                        {% endfor %}
+
+
+                    {% else %}
+
+
+                        <div class="empty-state">
+
+                            <i class="fa-regular fa-calendar"></i>
+
+                            <h4>
+                                No upcoming exams
+                            </h4>
+
+                            <p>
+                                You're all clear for now.
+                            </p>
+
+                        </div>
+
+
+                    {% endif %}
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+                       UPCOMING SCHEDULE
+        ================================================== -->
+
+        <div class="dashboard-panel upcoming-panel">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h3>
+                        Upcoming Study Sessions
+                    </h3>
+
+                    <p>
+                        Your next scheduled sessions
+                    </p>
+
+                </div>
+
+
+                <a href="/schedule" class="view-link">
+                    View schedule
+                </a>
+
+            </div>
+
+
+
+            <div class="upcoming-list">
+
+
+                {% if upcoming_schedules %}
+
+
+                    {% for schedule in upcoming_schedules %}
+
+
+                    <div class="upcoming-item">
+
+
+                        <div class="upcoming-date">
+
+                            <i class="fa-regular fa-calendar"></i>
+
+                            {{ schedule[0] }}
+
+                        </div>
+
+
+                        <div class="upcoming-time">
+
+                            <i class="fa-regular fa-clock"></i>
+
+                            {{ schedule[1] }} - {{ schedule[2] }}
+
+                        </div>
+
+
+                        <div class="upcoming-topic">
+
+                            <i class="fa-solid fa-book"></i>
+
+                            {{ schedule[3] }}
+
+                        </div>
+
+
+                    </div>
+
+
+                    {% endfor %}
+
+
+                {% else %}
+
+
+                    <div class="empty-state">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <h4>
+                            No upcoming sessions
+                        </h4>
+
+                        <p>
+                            Add a study session to start planning.
+                        </p>
+
+                    </div>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+                         RECOMMENDATION
+        ================================================== -->
+
+        <div class="recommendation-card">
+
+
+            <div class="recommendation-icon">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+            </div>
+
+
+            <div>
+
+
+                <div class="recommendation-label">
+                    STUDY TIP
+                </div>
+
+
+                <h3>
+                    A small amount of progress every day adds up.
+                </h3>
+
+
+                <p>
+                    {{ recommendations }}
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
 
 
 </div>
-
-
-
-<a href="/ai_planner">
-
-<button>
-
-🤖 Generate AI Plan
-
-</button>
-
-</a>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- Welcome -->
-
-<div class="welcome-card">
-
-
-<div>
-
-<h2>
-
-Ready to learn today? 🚀
-
-</h2>
-
-
-<p>
-
-Stay consistent and complete your goals.
-
-</p>
-
-
-</div>
-
-
-<div class="welcome-icon">
-
-🤖
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- Stats -->
-
-
-<div class="cards dashboard-cards">
-
-
-
-<div class="card stat-card">
-
-<h3>📚 Subjects</h3>
-
-<h2>{{subject_count}}</h2>
-
-<p>Learning areas</p>
-
-</div>
-
-
-
-
-<div class="card stat-card">
-
-<h3>📝 Pending Tasks</h3>
-
-<h2>{{pending_tasks}}</h2>
-
-<p>Need focus</p>
-
-</div>
-
-
-
-
-
-<div class="card stat-card">
-
-<h3>✅ Completed</h3>
-
-<h2>{{completed_tasks}}</h2>
-
-<p>Finished</p>
-
-</div>
-
-
-
-
-
-<div class="card stat-card">
-
-<h3>📅 Exams</h3>
-
-<h2>{{exam_count}}</h2>
-
-<p>Upcoming</p>
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- Progress -->
-
-
-<div class="progress-card">
-
-
-<h3>📊 Study Progress</h3>
-
-
-<div class="progress-bar">
-
-
-<div class="progress"
-
-style="width:{{progress}}%;">
-
-</div>
-
-
-</div>
-
-
-<p>
-
-{{progress}}% Completed 🎯
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- Main Grid -->
-
-
-<div class="grid">
-
-
-
-
-
-<div class="box">
-
-
-<h3>📅 Today's Schedule</h3>
-
-
-{% if schedules %}
-
-
-{% for schedule in schedules %}
-
-
-<p>
-
-🕒 {{schedule[0]}} - {{schedule[1]}}
-
-<br>
-
-📘 {{schedule[2]}}
-
-</p>
-
-
-<hr>
-
-
-{% endfor %}
-
-
-
-{% else %}
-
-
-<p>No sessions today 🎉</p>
-
-
-{% endif %}
-
-
-</div>
-
-
-
-
-
-
-
-<div class="box">
-
-
-<h3>⏳ Upcoming Schedule</h3>
-
-
-{% if upcoming_schedules %}
-
-
-{% for schedule in upcoming_schedules %}
-
-
-<p>
-
-📅 {{schedule[0]}}
-
-<br>
-
-🕒 {{schedule[1]}} - {{schedule[2]}}
-
-<br>
-
-📘 {{schedule[3]}}
-
-
-</p>
-
-
-<hr>
-
-
-{% endfor %}
-
-
-
-{% else %}
-
-
-<p>No upcoming sessions 🎉</p>
-
-
-{% endif %}
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="box">
-
-
-<h3>📅 Upcoming Exams</h3>
-
-
-{% if upcoming_exams %}
-
-
-{% for exam in upcoming_exams %}
-
-
-<p>
-
-📘 <b>{{exam[0]}}</b>
-
-<br>
-
-{{exam[1]}}
-
-<br>
-
-🗓 {{exam[2]}}
-
-
-</p>
-
-
-<hr>
-
-
-{% endfor %}
-
-
-
-{% else %}
-
-
-<p>No exams 🎉</p>
-
-
-{% endif %}
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="box">
-
-
-<h3>🤖 AI Insights</h3>
-
-
-{% for insight in insights %}
-
-
-<p>
-
-💡 {{insight}}
-
-</p>
-
-
-<hr>
-
-
-{% endfor %}
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="box">
-
-
-<h3>🔥 Quick Actions</h3>
-
-
-<a href="/add_subject">
-
-<button>
-
-➕ Subject
-
-</button>
-
-</a>
-
-
-
-<a href="/add_task">
-
-<button>
-
-📝 Task
-
-</button>
-
-</a>
-
-
-
-<a href="/add_exam">
-
-<button>
-
-📅 Exam
-
-</button>
-
-</a>
-
-
-
-<a href="/add_schedule">
-
-<button>
-
-🗓 Schedule
-
-</button>
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="ai-box">
-
-
-<h3>🤖 AI Recommendation</h3>
-
-
-<p>
-
-{{recommendations}}
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-</main>
-
-
-</div>
-
-
-<script>
-
-
-const menu = document.querySelector(".mobile-menu");
-
-const sidebar = document.querySelector(".sidebar");
-
-
-menu.onclick = () => {
-
-sidebar.classList.toggle("show");
-
-};
-
-
-</script>
-
-
 
 
 </body>

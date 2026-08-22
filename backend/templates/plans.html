@@ -6,301 +6,629 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My AI Plans</title>
+    <title>My Plans | Study Planner</title>
 
     <link rel="stylesheet"
-        href="{{ url_for('static', filename='css/style.css') }}">
+          href="{{ url_for('static', filename='css/style.css') }}">
 
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
+
 
 <body>
 
 <div class="dashboard">
 
-    <!-- Sidebar -->
+
+    <!-- =====================================================
+                        SIDEBAR
+    ====================================================== -->
 
     <aside class="sidebar">
 
-        <h2>📚 AI Planner</h2>
+        <!-- Brand -->
 
-        <ul>
+        <div class="sidebar-brand">
 
-            <li>
-                <a href="/dashboard">
-                    <i class="fa-solid fa-house"></i>
-                    Dashboard
-                </a>
-            </li>
+            <div class="brand-icon">
 
-            <li>
-                <a href="/subjects">
-                    <i class="fa-solid fa-book"></i>
-                    Subjects
-                </a>
-            </li>
+                <i class="fa-solid fa-book-open"></i>
 
-            <li>
-                <a href="/tasks">
-                    <i class="fa-solid fa-list-check"></i>
-                    Tasks
-                </a>
-            </li>
+            </div>
 
-            <li>
-                <a href="/schedule">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    Study Schedule
-                </a>
-            </li>
+            <div>
 
-            <li>
-                <a href="/ai_planner">
-                    <i class="fa-solid fa-robot"></i>
-                    AI Planner
-                </a>
-            </li>
+                <h2>Study Planner</h2>
 
-            <li class="active">
-                <a href="/my_plans">
-                    <i class="fa-solid fa-brain"></i>
-                    My AI Plans
-                </a>
-            </li>
+                <span>Personal Learning</span>
 
-            <li>
-                <a href="/progress">
-                    <i class="fa-solid fa-chart-line"></i>
-                    Progress
-                </a>
-            </li>
+            </div>
 
-            <li>
-                <a href="/exams">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    Exams
-                </a>
-            </li>
+        </div>
 
-            <li>
-                <a href="/logout">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    Logout
-                </a>
-            </li>
 
-        </ul>
+        <!-- Main Navigation -->
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-label">
+                MAIN
+            </div>
+
+            <ul>
+
+                <li>
+
+                    <a href="/dashboard">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        Dashboard
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="/subjects">
+
+                        <i class="fa-solid fa-book"></i>
+
+                        Subjects
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="/tasks">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                        Tasks
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="/schedule">
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                        Study Schedule
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- Planning -->
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-label">
+                PLANNING
+            </div>
+
+            <ul>
+
+                <li>
+
+                    <a href="/ai_planner">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                        AI Planner
+
+                    </a>
+
+                </li>
+
+
+                <li class="active">
+
+                    <a href="/my_plans">
+
+                        <i class="fa-solid fa-folder"></i>
+
+                        My Plans
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="/progress">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        Progress
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="/exams">
+
+                        <i class="fa-solid fa-calendar-check"></i>
+
+                        Exams
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- Logout -->
+
+        <div class="sidebar-bottom">
+
+            <a href="/logout" class="logout-link">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </div>
 
     </aside>
 
-    <!-- Main Content -->
+
+
+    <!-- =====================================================
+                        MAIN CONTENT
+    ====================================================== -->
 
     <main class="content">
+
+
+        <!-- Page Header -->
 
         <div class="topbar">
 
             <div>
-                <h2>🤖 My AI Plans</h2>
-                <p>Your personalized AI study strategies</p>
+
+                <div class="page-label">
+                    PLANNING
+                </div>
+
+                <h1>
+                    My Study Plans
+                </h1>
+
+                <p class="topbar-subtitle">
+                    View and manage your personalized study plans.
+                </p>
+
             </div>
 
-            <a href="/ai_planner">
-                <button>
-                    <i class="fa-solid fa-plus"></i>
-                    Generate New Plan
-                </button>
-            </a>
+
+            <div class="topbar-action">
+
+                <a href="/ai_planner">
+
+                    <button class="primary-btn">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Create New Plan
+
+                    </button>
+
+                </a>
+
+            </div>
 
         </div>
 
-        <!-- Statistics -->
 
-        <div class="cards">
 
-            <div class="card">
-                <h3>Total Plans</h3>
-                <h2>{{ plans|length }}</h2>
+        <!-- =====================================================
+                            STATISTICS
+        ====================================================== -->
+
+        <div class="dashboard-cards">
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon subjects-icon">
+
+                        <i class="fa-solid fa-folder"></i>
+
+                    </div>
+
+                    <span class="stat-status">
+                        All plans
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    {{ plans|length }}
+                </h2>
+
+                <h3>
+                    Total Plans
+                </h3>
+
+                <p>
+                    Study plans created
+                </p>
+
             </div>
 
-            <div class="card">
-                <h3>AI Powered</h3>
-                <h2>🤖</h2>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon pending-icon">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    </div>
+
+                    <span class="stat-status">
+                        Personalized
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    AI
+                </h2>
+
+                <h3>
+                    Smart Planning
+                </h3>
+
+                <p>
+                    Plans tailored to your goals
+                </p>
+
             </div>
 
-            <div class="card">
-                <h3>Status</h3>
-                <h2>Active</h2>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <div class="stat-icon completed-icon">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+                    <span class="stat-status">
+                        Ready
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Active
+                </h2>
+
+                <h3>
+                    Planning Status
+                </h3>
+
+                <p>
+                    Your plans are available
+                </p>
+
             </div>
+
 
         </div>
 
-        <br>
 
-        <!-- Search -->
 
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="🔍 Search by subject..."
-            onkeyup="searchPlans()">
+        <!-- =====================================================
+                            SEARCH
+        ====================================================== -->
 
-        <br><br>
+        <div class="dashboard-panel"
+             style="margin-bottom:20px;">
 
-        <!-- Plans -->
+            <div class="panel-header">
 
-        <div class="cards" id="plansContainer">
+                <div>
+
+                    <h3>
+                        Your Plans
+                    </h3>
+
+                    <p>
+                        Search through your saved study plans.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by subject..."
+                onkeyup="searchPlans()"
+                style="max-width:450px;">
+
+        </div>
+
+
+
+        <!-- =====================================================
+                            PLANS
+        ====================================================== -->
 
         {% if plans %}
 
-        {% for plan in plans %}
+        <div class="dashboard-cards"
+             id="plansContainer">
 
-        <div class="card plan-item">
 
-            <h3>
-                📚 {{ plan[2] }}
-            </h3>
+            {% for plan in plans %}
 
-            <p>
-                ⏰
-                <b>{{ plan[3] }} Hours / Day</b>
-            </p>
+            <div class="stat-card plan-item">
 
-            <p>
-                📅
-                <b>{{ plan[4] }}</b>
-            </p>
 
-            <hr>
+                <!-- Plan Icon -->
 
-            <p>
+                <div class="stat-top">
 
-                <b>🧠 AI Summary</b>
+                    <div class="stat-icon subjects-icon">
 
-                <br><br>
+                        <i class="fa-solid fa-book"></i>
 
-                Personalized study roadmap generated using Gemini AI.
+                    </div>
 
-            </p>
+                    <span class="stat-status">
 
-            <br>
-            <button>
-            <a href="/view_plan/{{ plan[0] }}" class="view-btn">
-                <i class="fa-solid fa-eye"></i>
-                View Plan
-            </a>
-            </button>
-            <br><br>
+                        Study Plan
 
-            <a
-                href="/delete_plan/{{ plan[0] }}"
-                onclick="return confirm('Delete this plan?')">
+                    </span>
 
-                <button>
+                </div>
 
-                    <i class="fa-solid fa-trash"></i>
 
-                    Delete
 
-                </button>
+                <!-- Subject -->
 
-            </a>
+                <h3 style="font-size:18px; margin-bottom:12px;">
+
+                    {{ plan[2] }}
+
+                </h3>
+
+
+
+                <!-- Details -->
+
+                <p style="margin-bottom:7px;">
+
+                    <i class="fa-regular fa-clock"></i>
+
+                    <strong>
+                        {{ plan[3] }} hours/day
+                    </strong>
+
+                </p>
+
+
+                <p style="margin-bottom:15px;">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    Exam date:
+
+                    <strong>
+                        {{ plan[4] }}
+                    </strong>
+
+                </p>
+
+
+
+                <!-- Divider -->
+
+                <div style="
+                    border-top:1px solid #e5e7eb;
+                    margin:18px 0;
+                "></div>
+
+
+
+                <!-- Description -->
+
+                <p style="
+                    font-size:14px;
+                    line-height:1.6;
+                    margin-bottom:20px;
+                ">
+
+                    Personalized study roadmap created according
+                    to your subjects, available time and target date.
+
+                </p>
+
+
+
+                <!-- Actions -->
+
+                <div style="
+                    display:flex;
+                    gap:10px;
+                    flex-wrap:wrap;
+                ">
+
+
+                    <a
+                        href="/view_plan/{{ plan[0] }}"
+                        style="text-decoration:none;"
+                    >
+
+                        <button>
+
+                            <i class="fa-solid fa-eye"></i>
+
+                            View Plan
+
+                        </button>
+
+                    </a>
+
+
+
+                    <a
+                        href="/delete_plan/{{ plan[0] }}"
+                        onclick="return confirm('Delete this study plan?')"
+                        style="text-decoration:none;"
+                    >
+
+                        <button
+                            class="secondary"
+                        >
+
+                            <i class="fa-solid fa-trash"></i>
+
+                            Delete
+
+                        </button>
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+            {% endfor %}
+
 
         </div>
 
-        {% endfor %}
 
         {% else %}
 
-        <div class="ai-box">
 
-            <h2>No AI Plans Yet 🤖</h2>
+        <!-- =====================================================
+                            EMPTY STATE
+        ====================================================== -->
 
-            <p>
+        <div class="dashboard-panel">
 
-                Generate your first AI study plan.
+            <div class="empty-state">
 
-            </p>
+                <i class="fa-regular fa-folder-open"></i>
+
+                <h4>
+                    No study plans yet
+                </h4>
+
+                <p>
+                    Create your first personalized study plan to get started.
+                </p>
+
+                <br>
+
+                <a href="/ai_planner">
+
+                    <button>
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Create Study Plan
+
+                    </button>
+
+                </a>
+
+            </div>
 
         </div>
 
         {% endif %}
 
-        </div>
 
     </main>
 
 </div>
 
-<!-- Modal -->
 
-<div id="planModal" class="modal">
 
-    <div class="modal-content">
-
-        <span class="close"
-            onclick="closeModal()">
-
-            &times;
-
-        </span>
-
-        <h2>🤖 AI Study Plan</h2>
-
-        <pre id="modalText"></pre>
-
-    </div>
-
-</div>
+<!-- =====================================================
+                        SEARCH SCRIPT
+===================================================== -->
 
 <script>
 
-function openModal(plan){
-
-    document.getElementById("modalText").textContent = plan;
-
-    document.getElementById("planModal").style.display="block";
-
-}
-
-function closeModal(){
-
-    document.getElementById("planModal").style.display="none";
-
-}
-
-window.onclick=function(event){
-
-    let modal=document.getElementById("planModal");
-
-    if(event.target==modal){
-
-        modal.style.display="none";
-
-    }
-
-}
-
 function searchPlans(){
 
-    let input=document.getElementById("searchInput").value.toUpperCase();
+    let input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
 
-    let cards=document.getElementsByClassName("plan-item");
 
-    for(let i=0;i<cards.length;i++){
+    let cards =
+        document.getElementsByClassName("plan-item");
 
-        let title=cards[i].getElementsByTagName("h3")[0];
 
-        if(title.innerText.toUpperCase().indexOf(input)>-1){
+    for(let i = 0; i < cards.length; i++){
 
-            cards[i].style.display="block";
+        let title =
+            cards[i]
+            .getElementsByTagName("h3")[0];
+
+
+        if(
+            title.innerText
+            .toLowerCase()
+            .includes(input)
+        ){
+
+            cards[i].style.display = "";
 
         }
 
         else{
 
-            cards[i].style.display="none";
+            cards[i].style.display = "none";
 
         }
 
@@ -309,6 +637,7 @@ function searchPlans(){
 }
 
 </script>
+
 
 </body>
 

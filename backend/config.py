@@ -4,7 +4,7 @@ import google.generativeai as genai
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="",
+    password="Deepika@123",
     database="AI_Study_Planner"
 )
 

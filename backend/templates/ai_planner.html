@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-<title>AI Planner</title>
+    <meta charset="UTF-8">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
+    <title>AI Planner | Study Planner</title>
 
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 </head>
-
 
 
 <body>
@@ -24,486 +24,775 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 <div class="dashboard">
 
 
+    <!-- =====================================================
+                         SIDEBAR
+    ====================================================== -->
 
-<aside class="sidebar">
+    <aside class="sidebar">
 
 
-<h2>📚 AI Planner</h2>
+        <!-- BRAND -->
 
+        <div class="sidebar-brand">
 
-<ul>
+            <div class="brand-icon">
 
+                <i class="fa-solid fa-book-open"></i>
 
-<li>
-<a href="/dashboard">
-<i class="fa-solid fa-house"></i>
-Dashboard
-</a>
-</li>
+            </div>
 
+            <div>
 
-<li>
-<a href="/subjects">
-<i class="fa-solid fa-book"></i>
-Subjects
-</a>
-</li>
+                <h2>Study Planner</h2>
 
+                <span>Stay organized. Learn better.</span>
 
-<li>
-<a href="/tasks">
-<i class="fa-solid fa-list-check"></i>
-Tasks
-</a>
-</li>
+            </div>
 
+        </div>
 
-<li>
-<a href="/schedule">
-<i class="fa-solid fa-calendar-days"></i>
-Study Schedule
-</a>
-</li>
 
 
+        <!-- MAIN -->
 
-<li class="active">
+        <div class="sidebar-section">
 
-<a href="/ai_planner">
+            <div class="sidebar-label">
+                MAIN
+            </div>
 
-<i class="fa-solid fa-robot"></i>
+            <ul>
 
-AI Planner
+                <li>
+                    <a href="/dashboard">
 
-</a>
+                        <i class="fa-solid fa-house"></i>
 
-</li>
+                        <span>Dashboard</span>
 
+                    </a>
+                </li>
 
 
-<li>
-<a href="/my_plans">
+                <li>
+                    <a href="/subjects">
 
-<i class="fa-solid fa-brain"></i>
+                        <i class="fa-solid fa-book"></i>
 
-My AI Plans
+                        <span>Subjects</span>
 
-</a>
-</li>
+                    </a>
+                </li>
 
 
+                <li>
+                    <a href="/tasks">
 
-<li>
-<a href="/progress">
+                        <i class="fa-solid fa-list-check"></i>
 
-<i class="fa-solid fa-chart-line"></i>
+                        <span>Tasks</span>
 
-Progress
+                    </a>
+                </li>
 
-</a>
-</li>
 
+                <li>
+                    <a href="/schedule">
 
-<li>
-<a href="/exams">
+                        <i class="fa-solid fa-calendar-days"></i>
 
-<i class="fa-solid fa-calendar-check"></i>
+                        <span>Study Schedule</span>
 
-Exams
+                    </a>
+                </li>
 
-</a>
-</li>
 
+                <li>
+                    <a href="/exams">
 
+                        <i class="fa-solid fa-calendar-check"></i>
 
-<li>
-<a href="/logout">
+                        <span>Exams</span>
 
-<i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </li>
 
-Logout
+            </ul>
 
-</a>
-</li>
+        </div>
 
 
-</ul>
 
+        <!-- PLANNING -->
 
-</aside>
+        <div class="sidebar-section">
 
+            <div class="sidebar-label">
+                PLANNING
+            </div>
 
+            <ul>
 
+                <li class="active">
 
+                    <a href="/ai_planner">
 
-<main class="content">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
 
+                        <span>AI Planner</span>
 
+                    </a>
 
+                </li>
 
 
-<div class="topbar">
+                <li>
 
+                    <a href="/my_plans">
 
-<div>
+                        <i class="fa-solid fa-file-lines"></i>
 
+                        <span>My Plans</span>
 
-<h2>🤖 AI Study Planner</h2>
+                    </a>
 
+                </li>
 
-<p>
 
-Create your personalized learning roadmap
+                <li>
 
-</p>
+                    <a href="/progress">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        <span>Progress</span>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+
+        <!-- LOGOUT -->
+
+        <div class="sidebar-bottom">
+
+            <a href="/logout" class="logout-link">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+                         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="content">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="topbar">
+
+            <div>
+
+                <div class="page-label">
+                    PLANNING
+                </div>
+
+                <h1>
+                    Create a Study Plan
+                </h1>
+
+                <p class="topbar-subtitle">
+                    Tell us about your goals, schedule and subjects.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+                     INTRODUCTION CARD
+        ================================================== -->
+
+        <div class="planner-intro">
+
+
+            <div class="planner-intro-content">
+
+                <div class="planner-icon">
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Build a plan that fits your routine
+                    </h2>
+
+                    <p>
+                        Provide a few details about what you're preparing
+                        for and how you prefer to study. Your plan will be
+                        created around your available time and priorities.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+                         FORM CARD
+        ================================================== -->
+
+        <div class="planner-form-card">
+
+
+            <div class="form-heading">
+
+                <div>
+
+                    <h2>
+                        Your Study Details
+                    </h2>
+
+                    <p>
+                        Fill in the details below to create your roadmap.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <form method="POST" class="planner-form">
+
+
+                <!-- =========================================
+                            BASIC DETAILS
+                ========================================== -->
+
+                <div class="form-section">
+
+
+                    <div class="form-section-title">
+
+                        <span class="section-number">
+                            01
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Basic Details
+                            </h3>
+
+                            <p>
+                                Tell us what you want to achieve.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-grid">
+
+
+                        <!-- GOAL -->
+
+                        <div class="form-field">
+
+                            <label for="goal">
+
+                                <i class="fa-solid fa-bullseye"></i>
+
+                                Goal
+
+                            </label>
+
+
+                            <select
+                                id="goal"
+                                name="goal"
+                                required>
+
+                                <option value="">
+                                    Select your goal
+                                </option>
+
+                                <option>
+                                    Exam Preparation
+                                </option>
+
+                                <option>
+                                    Placement Preparation
+                                </option>
+
+                                <option>
+                                    Skill Development
+                                </option>
+
+                                <option>
+                                    Project Learning
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- SUBJECTS -->
+
+                        <div class="form-field">
+
+                            <label for="subjects">
+
+                                <i class="fa-solid fa-book"></i>
+
+                                Subjects
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="subjects"
+                                name="subjects"
+                                placeholder="Python, AI, DBMS"
+                                required>
+
+
+                            <small>
+                                Separate multiple subjects with commas.
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- DAILY HOURS -->
+
+                        <div class="form-field">
+
+                            <label for="hours">
+
+                                <i class="fa-regular fa-clock"></i>
+
+                                Daily Study Hours
+
+                            </label>
+
+
+                            <input
+                                type="number"
+                                id="hours"
+                                name="hours"
+                                placeholder="Example: 4"
+                                min="1"
+                                required>
+
+                        </div>
+
+
+
+                        <!-- EXAM DATE -->
+
+                        <div class="form-field">
+
+                            <label for="exam_date">
+
+                                <i class="fa-regular fa-calendar"></i>
+
+                                Target Date
+
+                            </label>
+
+
+                            <input
+                                type="date"
+                                id="exam_date"
+                                name="exam_date"
+                                required>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                            STUDY PROFILE
+                ========================================== -->
+
+                <div class="form-section">
+
+
+                    <div class="form-section-title">
+
+                        <span class="section-number">
+                            02
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Study Profile
+                            </h3>
+
+                            <p>
+                                Help us understand your current learning level.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-grid">
+
+
+                        <!-- LEVEL -->
+
+                        <div class="form-field">
+
+                            <label for="level">
+
+                                <i class="fa-solid fa-signal"></i>
+
+                                Current Level
+
+                            </label>
+
+
+                            <select
+                                id="level"
+                                name="level"
+                                required>
+
+                                <option value="">
+                                    Select your level
+                                </option>
+
+                                <option>
+                                    Beginner
+                                </option>
+
+                                <option>
+                                    Intermediate
+                                </option>
+
+                                <option>
+                                    Advanced
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- LEARNING STYLE -->
+
+                        <div class="form-field">
+
+                            <label for="style">
+
+                                <i class="fa-solid fa-book-open"></i>
+
+                                Learning Style
+
+                            </label>
+
+
+                            <select
+                                id="style"
+                                name="style"
+                                required>
+
+                                <option value="">
+                                    Choose your style
+                                </option>
+
+                                <option>
+                                    Theory First
+                                </option>
+
+                                <option>
+                                    Practice First
+                                </option>
+
+                                <option>
+                                    Both Theory and Practice
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                            PERSONALIZATION
+                ========================================== -->
+
+                <div class="form-section">
+
+
+                    <div class="form-section-title">
+
+                        <span class="section-number">
+                            03
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Personalize Your Plan
+                            </h3>
+
+                            <p>
+                                Add anything that needs extra attention.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- WEAK TOPICS -->
+
+                    <div class="form-field full-field">
+
+                        <label for="weak_topics">
+
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+
+                            Weak Topics
+
+                        </label>
+
+
+                        <textarea
+                            id="weak_topics"
+                            name="weak_topics"
+                            placeholder="Example: SQL joins, recursion, probability..."></textarea>
+
+
+                        <small>
+                            Mention topics you find difficult or need more practice with.
+                        </small>
+
+                    </div>
+
+
+
+                    <!-- ROUTINE -->
+
+                    <div class="form-field full-field">
+
+                        <label for="routine">
+
+                            <i class="fa-regular fa-calendar-days"></i>
+
+                            Daily Routine
+
+                        </label>
+
+
+                        <textarea
+                            id="routine"
+                            name="routine"
+                            placeholder="Example: College 9 AM - 4 PM, free after 6 PM..."></textarea>
+
+
+                        <small>
+                            Include college, work or other fixed commitments.
+                        </small>
+
+                    </div>
+
+
+
+                    <!-- PRIORITY -->
+
+                    <div class="form-field full-field">
+
+                        <label for="priority">
+
+                            <i class="fa-solid fa-star"></i>
+
+                            Priority Topics
+
+                        </label>
+
+
+                        <textarea
+                            id="priority"
+                            name="priority"
+                            placeholder="Example: Focus more on Python and DBMS..."></textarea>
+
+
+                        <small>
+                            Mention subjects or topics that deserve extra time.
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                            PLAN PREFERENCES
+                ========================================== -->
+
+                <div class="form-section">
+
+
+                    <div class="form-section-title">
+
+                        <span class="section-number">
+                            04
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Plan Format
+                            </h3>
+
+                            <p>
+                                Choose how you want your study roadmap organized.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-field">
+
+
+                        <label for="plan_type">
+
+                            <i class="fa-solid fa-layer-group"></i>
+
+                            Plan Type
+
+                        </label>
+
+
+                        <select
+                            id="plan_type"
+                            name="plan_type">
+
+                            <option>
+                                Daily Schedule
+                            </option>
+
+                            <option>
+                                Weekly Roadmap
+                            </option>
+
+                            <option>
+                                Revision Plan
+                            </option>
+
+                        </select>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =========================================
+                            SUBMIT
+                ========================================== -->
+
+                <div class="planner-submit">
+
+
+                    <div>
+
+                        <h3>
+                            Ready to plan your study time?
+                        </h3>
+
+                        <p>
+                            Your roadmap will be based on the information
+                            you've provided above.
+                        </p>
+
+                    </div>
+
+
+                    <button type="submit"
+                            class="generate-plan-btn">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                        Generate Study Plan
+
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+
+    </main>
 
 
 </div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<!-- AI Header -->
-
-
-<div class="ai-hero">
-
-
-<div>
-
-<h1>
-
-🚀 Smart Study Roadmap
-
-</h1>
-
-
-<p>
-
-AI will analyze your goal, time and subjects to create your plan.
-
-</p>
-
-
-</div>
-
-
-<div class="ai-icon">
-
-🧠
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-<div class="form-card ai-form">
-
-
-
-<h2>
-
-Generate AI Plan ✨
-
-</h2>
-
-
-
-<form method="POST">
-
-
-
-
-
-<div class="form-grid">
-
-
-
-
-
-<div>
-
-
-<label>🎯 Goal</label>
-
-<select name="goal" required>
-
-<option value="">Select Goal</option>
-
-<option>Exam Preparation</option>
-
-<option>Placement Preparation</option>
-
-<option>Skill Development</option>
-
-<option>Project Learning</option>
-
-</select>
-
-</div>
-
-
-
-
-
-
-
-<div>
-
-
-<label>📚 Subjects</label>
-
-<input
-
-type="text"
-
-name="subjects"
-
-placeholder="Python, AI, DBMS"
-
-required>
-
-
-</div>
-
-
-
-
-
-
-
-<div>
-
-
-<label>⏳ Daily Hours</label>
-
-<input
-
-type="number"
-
-name="hours"
-
-placeholder="Hours/day"
-
-required>
-
-
-</div>
-
-
-
-
-
-
-
-<div>
-
-
-<label>📅 Target Date</label>
-
-<input
-
-type="date"
-
-name="exam_date"
-
-required>
-
-
-</div>
-
-
-
-
-
-
-
-<div>
-
-
-<label>🧠 Level</label>
-
-
-<select name="level" required>
-
-
-<option value="">Select Level</option>
-
-<option>Beginner</option>
-
-<option>Intermediate</option>
-
-<option>Advanced</option>
-
-
-</select>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div>
-
-
-<label>📖 Learning Style</label>
-
-
-<select name="style" required>
-
-
-<option value="">Choose Style</option>
-
-<option>Theory First</option>
-
-<option>Practice First</option>
-
-<option>Both Theory and Practice</option>
-
-
-</select>
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<label>🔥 Weak Topics</label>
-
-
-<textarea
-
-name="weak_topics"
-
-placeholder="Topics you struggle with..."></textarea>
-
-
-
-
-
-
-
-
-<label>🗓 Daily Routine</label>
-
-
-<textarea
-
-name="routine"
-
-placeholder="College timings, free hours..."></textarea>
-
-
-
-
-
-
-
-
-<label>⭐ Priority Topics</label>
-
-
-<textarea
-
-name="priority"
-
-placeholder="Extra focus topics"></textarea>
-
-
-
-
-
-
-
-
-<label>📌 Plan Type</label>
-
-
-<select name="plan_type">
-
-
-<option>Daily Schedule</option>
-
-<option>Weekly Roadmap</option>
-
-<option>Revision Plan</option>
-
-
-</select>
-
-
-
-
-
-
-
-<button type="submit">
-
-
-🤖 Generate Personalized Plan
-
-
-</button>
-
-
-
-
-
-</form>
-
-
-
-</div>
-
-
-
-
-
-
-
-</main>
-
-
-
-</div>
-
-
-
 
 
 </body>
-
 
 </html>

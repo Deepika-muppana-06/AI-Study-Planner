@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from config import db, model
-from datetime import date
+from datetime import date, datetime
 
 import markdown
 
@@ -360,7 +360,7 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('/ai_planner', methods=['GET','POST'])
+@app.route('/ai_planner', methods=['GET', 'POST'])
 def ai_planner():
 
     if request.method == "POST":
@@ -377,106 +377,229 @@ def ai_planner():
         priority = request.form.get("priority")
         plan_type = request.form.get("plan_type")
 
+        # Current date
+        today = date.today()
 
-        subjects_list = subjects.split(",")
+        # Convert exam date string to date object
+        exam = datetime.strptime(exam_date, "%Y-%m-%d").date()
 
+        # Calculate remaining days
+        days_left = (exam - today).days
+        if days_left < 0:
+            return "The exam date has already passed. Please select a future date."
+
+        # Subject list
+        subjects_list = [s.strip() for s in subjects.split(",") if s.strip()]
 
         subject_plan = ""
-
         for i, sub in enumerate(subjects_list):
+            subject_plan += f"{i+1}. {sub}\n"
 
-            sub = sub.strip()
-
-            subject_plan += f"""
-{i+1}. {sub}
-"""
-
-
-        morning = subjects_list[0].strip()
-
+        morning = subjects_list[0] if subjects_list else "Study"
 
         if len(subjects_list) > 1:
-            afternoon = subjects_list[1].strip()
+            afternoon = subjects_list[1]
         else:
             afternoon = morning
+        cursor = db.cursor(dictionary=True)
+        # Get pending tasks
+        cursor.execute("""
+        SELECT subject, task_name, deadline
+        FROM tasks
+        WHERE user_id=%s
+        AND status='Pending'
+        ORDER BY deadline
+        """, (session['user_id'],))
 
+        tasks = cursor.fetchall()
 
+        task_text = ""
+
+        for task in tasks:
+            task_text += (
+                f"- {task['subject']}: "
+                f"{task['task_name']} "
+                f"(Deadline: {task['deadline']})\n"
+            )
+        # Get upcoming exams
+        cursor.execute("""
+        SELECT subject, exam_name, exam_date
+        FROM exams
+        WHERE user_id=%s
+        ORDER BY exam_date
+        """, (session['user_id'],))
+
+        exams = cursor.fetchall()
+
+        exam_text = ""
+
+        for exam in exams:
+            exam_text += (
+                f"- {exam['subject']}: "
+                f"{exam['exam_name']} "
+                f"on {exam['exam_date']}\n"
+            )
+        # Get study schedule
+        cursor.execute("""
+        SELECT study_date, start_time, end_time, topic
+        FROM study_schedule
+        WHERE user_id=%s
+        ORDER BY study_date, start_time
+        LIMIT 20
+        """, (session['user_id'],))
+
+        schedules = cursor.fetchall()
+
+        schedule_text = ""
+
+        for schedule in schedules:
+            schedule_text += (
+                f"- {schedule['study_date']} | "
+                f"{schedule['start_time']} - {schedule['end_time']} : "
+                f"{schedule['topic']}\n"
+            )
         prompt = f"""
+You are an AI Study Planner.
 
-        You are an AI Study Planner.
+Today's Date: {today.strftime("%d-%m-%Y")}
+Exam Date: {exam.strftime("%d-%m-%Y")}
+Days Remaining: {days_left}
 
-        Create a concise, practical and personalized study plan.
+IMPORTANT RULES:
+- Today's Date is {today}.
+- The Exam Date is {exam_date}.
+- Days Remaining: {days_left}.
+- Use the Days Remaining value exactly as provided. Do NOT calculate it yourself.
+- Never assume today's date.
+- Never mention dates before Today's Date.
+- If Days Remaining is 0, generate a one-day revision plan.
+- If Days Remaining is negative, state that the exam date has already passed.
+- Divide the study plan according to the available Days Remaining.
+- Give more study time to weak topics.
+- Allocate more time to high-priority subjects.
+- Include short breaks after every 60–90 minutes of study.
+- Keep one revision session every week.
+- During the final week before the exam, focus mainly on revision and mock tests.
+- Do not invent dates or durations.
+- Respect the user's existing study schedule.
+- Do not create overlapping study sessions.
+- If a topic is already scheduled, avoid repeating it unnecessarily.
+- Use free time for revision, practice, or weak topics.
 
-        User Details:
+Student Details:
 
-        Goal: {goal}
-        Subjects: {subjects}
-        Daily Hours: {hours}
-        Exam Date: {exam_date}
-        Current Level: {level}
-        Learning Style: {style}
-        Weak Topics: {weak_topics}
-        Routine: {routine}
-        Priority: {priority}
+Goal: {goal}
+Subjects: {subjects}
+Daily Study Hours: {hours}
+Current Level: {level}
+Learning Style: {style}
+Weak Topics: {weak_topics}
+Daily Routine: {routine}
+Priority: {priority}
+Pending Tasks:{task_text}
+Upcoming Exams:{exam_text}
+Existing Study Schedule:{schedule_text}
+Plan Type: {plan_type}
 
+Create a concise, personalized study plan.
 
-        IMPORTANT OUTPUT FORMAT:
+IMPORTANT OUTPUT FORMAT
 
-        Do NOT write a long essay.
+# 🤖 AI Study Plan
 
-        Use short sections, tables and bullet points.
+## 📌 Overview
 
-        Format:
+| Item | Details |
+|------|---------|
+| Goal | {goal} |
+| Subjects | {subjects} |
+| Today's Date | {today.strftime("%d-%m-%Y")} |
+| Exam Date | {exam.strftime("%d-%m-%Y")} |
+| Days Remaining | {days_left} |
+| Daily Study Hours | {hours} |
+| Level | {level} |
 
-        # 🤖 AI Study Plan
+## 🗓️ Weekly Study Roadmap
 
+| Week | Topics | Tasks |
+|------|--------|-------|
 
-        ## 📌 Overview Table
+## ⏰ Daily Schedule
 
-        | Item | Details |
-        |---|---|
-        | Goal | |
-        | Subjects | |
-        | Exam Date | |
-        | Daily Hours | |
-        | Level | |
+Create a realistic daily schedule based on:
+- Daily Study Hours: {hours}
+- Learning Style: {style}
+- Daily Routine: {routine}
 
+| Time | Activity |
+|------|----------|
+| Morning | |
+| Afternoon | |
+| Evening | |
 
-        ## 🗓️ Study Roadmap
+The schedule should:
+- Not exceed {hours} study hours per day.
+- Match the user's daily routine.
+- Use the user's preferred learning style.
+- Include 10–15 minute breaks after every 60–90 minutes.
+## 🗓️ Study Roadmap
 
-        | Day/Week | Topic | Task |
-        |---|---|---|
-        | | | |
+Create a roadmap based on exactly {days_left} days remaining.
 
+Rules:
+- If days_left <= 7, create a day-by-day plan.
+- If days_left is between 8 and 30, create a week-by-week plan.
+- If days_left > 30, divide the plan into phases (Foundation, Practice, Revision).
+- Cover all subjects.
+- Give extra time to weak topics.
+- Finish the syllabus before the final revision period.
+- Reserve the last 20% of the remaining days for revision and mock tests.
 
-        ## ⏰ Daily Schedule
+| Day/Week | Topic | Task |
+|-----------|-------|------|
 
-        | Time | Activity |
-        |---|---|
-        | Morning | |
-        | Afternoon | |
-        | Evening | |
+## 🔥 Focus Areas
 
+Generate 4-6 focus areas based on:
+- Weak Topics: {weak_topics}
+- Priority Subject: {priority}
+- Current Level: {level}
 
-        ## 🔥 Focus Areas
+Do not mention subjects that are already strong.
+Focus on improving weak areas first.
 
-        - 
-        - 
+## 💡 Tips
 
+Give exactly 5 personalized study tips based on:
+- Learning Style: {style}
+- Daily Routine: {routine}
+- Daily Study Hours: {hours}
+- Current Level: {level}
 
-        ## 💡 Tips
+The tips should be practical and specific.
+Do not give generic advice like "Study hard" or "Stay motivated."
+Keep the response between 600 and 800 words.
 
-        - 
+Write only valid Markdown.
 
+Rules:
+- Use proper Markdown tables.
+- Use bullet points where appropriate.
+- Do not wrap the response inside ```markdown or ``` code blocks.
+- Do not add greetings or introductions.
+- Do not add explanations outside the requested sections.
+- Fill every table completely.
+- Keep the language concise and professional.
+- Do not leave any placeholder rows or empty cells.
+"""
 
-        Keep the plan within 700-900 words maximum.
-        Make it easy to read.
-        """
+        try:
+            response = model.generate_content(prompt)
+            plan = response.text
 
+        except Exception as e:
+            return f"Error generating AI study plan: {e}"
 
-        response = model.generate_content(prompt)
-
-        plan = response.text
         cursor = db.cursor()
 
         query = """
@@ -484,6 +607,7 @@ def ai_planner():
         (user_id, subjects, hours, exam_date, plan_text)
         VALUES (%s,%s,%s,%s,%s)
         """
+
         values = (
             session['user_id'],
             subjects,
@@ -491,9 +615,10 @@ def ai_planner():
             exam_date,
             plan
         )
-        cursor.execute(query, values)
 
+        cursor.execute(query, values)
         db.commit()
+
         return redirect('/my_plans')
 
     return render_template('ai_planner.html')
